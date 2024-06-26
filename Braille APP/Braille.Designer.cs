@@ -84,21 +84,21 @@
             // abrirToolStripMenuItem
             // 
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.abrirToolStripMenuItem.Text = "Abrir";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // salvarComoToolStripMenuItem
             // 
             this.salvarComoToolStripMenuItem.Name = "salvarComoToolStripMenuItem";
-            this.salvarComoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salvarComoToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.salvarComoToolStripMenuItem.Text = "Salvar Como";
             this.salvarComoToolStripMenuItem.Click += new System.EventHandler(this.salvarComoToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
@@ -297,6 +297,7 @@
             this.btn_Traduzir.TabIndex = 6;
             this.btn_Traduzir.Text = "Traduzir";
             this.btn_Traduzir.UseVisualStyleBackColor = true;
+            this.btn_Traduzir.Click += new System.EventHandler(this.btn_Traduzir_Click);
             // 
             // Braille
             // 

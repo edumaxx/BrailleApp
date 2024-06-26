@@ -13,16 +13,37 @@ namespace Braille_APP
     public partial class Braille : Form
     {
 
-
-
-        //public const string Braillelibdll = @"c:\users\eduar\source\repos\braille app\braillelib\x64\debug\Braillelib.dll";
-        //[DllImport(Braillelibdll, CallingConvention = CallingConvention.Cdecl)]
-        //public static extern int AddNumbers(int a, int b);
-
-        //[DllImport(Braillelibdll, CallingConvention = CallingConvention.Cdecl)]
-        //public static extern int SubstractNumbers(int a, int b);
-
-
+        string[] brailleABNT = {
+            "100000", // a
+            "101000", // b
+            "110000", // c
+            "110100", // d
+            "100100", // e
+            "111000", // f
+            "111100", // g
+            "101100", // h
+            "011000", // i
+            "011100", // j
+            "100010", // k
+            "101010", // l
+            "110010", // m
+            "110110", // n
+            "100110", // o
+            "111010", // p
+            "111110", // q
+            "101110", // r
+            "011010", // s
+            "011110", // t
+            "100011", // u
+            "101011", // v
+            "011111", // w
+            "110011", // x
+            "110111", // y
+            "100111", // z
+            "001000", //,
+            "000010", //.
+            "001001", //?
+        };
 
 
         SerialPort _serial;
@@ -166,6 +187,31 @@ namespace Braille_APP
             _serial.Write(txtValue.Text);
         }
 
+        private void btn_Traduzir_Click(object sender, EventArgs e)
+        {
+            string frase = txtValue.Text;
+            string[] braille = { "", "", "" };
+
+            foreach (char letra in frase)
+            {
+                char lowerCaseLetter = char.ToLower(letra);
+                if (lowerCaseLetter == ' ')
+                {
+                    braille[0] += "  ";
+                    braille[1] += "  ";
+                    braille[2] += "  ";
+                }
+                else if (lowerCaseLetter >= 'a' && lowerCaseLetter <= 'z')
+                {
+                    string codigo = brailleABNT[lowerCaseLetter - 'a'];
+                    braille[0] += codigo[0] + "" + codigo[1] + " ";
+                    braille[1] += codigo[2] + "" + codigo[3] + " ";
+                    braille[2] += codigo[4] + "" + codigo[5] + " ";
+                }
+            }
+
+            MessageBox.Show($"{braille[0]}\n{braille[1]}\n{braille[2]}", "Tradução para Braille");
+        }
 
     }
 }
