@@ -351,7 +351,6 @@
         private System.Windows.Forms.Label lblMode;
         private System.Windows.Forms.Label lblHandShake;
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbbHandshake;
         private System.Windows.Forms.Button btn_Traduzir;
     }
