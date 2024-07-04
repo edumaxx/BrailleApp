@@ -1,0 +1,273 @@
+﻿namespace Braille_APP
+{
+    partial class Tradução_Braille
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtTradu = new System.Windows.Forms.TextBox();
+            this.gpbConnection = new System.Windows.Forms.GroupBox();
+            this.btnDisconnect = new System.Windows.Forms.Button();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.cbbBaudRate = new System.Windows.Forms.ComboBox();
+            this.lblBaudRate = new System.Windows.Forms.Label();
+            this.lblCom = new System.Windows.Forms.Label();
+            this.cbbComPorts = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbbHandshake = new System.Windows.Forms.ComboBox();
+            this.cbbMode = new System.Windows.Forms.ComboBox();
+            this.lblMode = new System.Windows.Forms.Label();
+            this.lblHandShake = new System.Windows.Forms.Label();
+            this.cbbParity = new System.Windows.Forms.ComboBox();
+            this.lblParity = new System.Windows.Forms.Label();
+            this.cbbDataSize = new System.Windows.Forms.ComboBox();
+            this.lblDataSize = new System.Windows.Forms.Label();
+            this.gpbConnection.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(548, 347);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 31);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Executar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtTradu
+            // 
+            this.txtTradu.Enabled = false;
+            this.txtTradu.Location = new System.Drawing.Point(6, 19);
+            this.txtTradu.Multiline = true;
+            this.txtTradu.Name = "txtTradu";
+            this.txtTradu.Size = new System.Drawing.Size(660, 206);
+            this.txtTradu.TabIndex = 2;
+            // 
+            // gpbConnection
+            // 
+            this.gpbConnection.Controls.Add(this.cbbHandshake);
+            this.gpbConnection.Controls.Add(this.cbbMode);
+            this.gpbConnection.Controls.Add(this.btnDisconnect);
+            this.gpbConnection.Controls.Add(this.lblMode);
+            this.gpbConnection.Controls.Add(this.btnConnect);
+            this.gpbConnection.Controls.Add(this.lblHandShake);
+            this.gpbConnection.Controls.Add(this.cbbBaudRate);
+            this.gpbConnection.Controls.Add(this.cbbParity);
+            this.gpbConnection.Controls.Add(this.lblBaudRate);
+            this.gpbConnection.Controls.Add(this.lblParity);
+            this.gpbConnection.Controls.Add(this.lblCom);
+            this.gpbConnection.Controls.Add(this.cbbDataSize);
+            this.gpbConnection.Controls.Add(this.cbbComPorts);
+            this.gpbConnection.Controls.Add(this.lblDataSize);
+            this.gpbConnection.Location = new System.Drawing.Point(12, 12);
+            this.gpbConnection.Name = "gpbConnection";
+            this.gpbConnection.Size = new System.Drawing.Size(671, 92);
+            this.gpbConnection.TabIndex = 4;
+            this.gpbConnection.TabStop = false;
+            this.gpbConnection.Text = "Conexão";
+            // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.Location = new System.Drawing.Point(536, 49);
+            this.btnDisconnect.Name = "btnDisconnect";
+            this.btnDisconnect.Size = new System.Drawing.Size(124, 31);
+            this.btnDisconnect.TabIndex = 15;
+            this.btnDisconnect.Text = "Disconnect";
+            this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(536, 11);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(124, 32);
+            this.btnConnect.TabIndex = 6;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // cbbBaudRate
+            // 
+            this.cbbBaudRate.BackColor = System.Drawing.SystemColors.Info;
+            this.cbbBaudRate.FormattingEnabled = true;
+            this.cbbBaudRate.Location = new System.Drawing.Point(49, 55);
+            this.cbbBaudRate.Name = "cbbBaudRate";
+            this.cbbBaudRate.Size = new System.Drawing.Size(72, 21);
+            this.cbbBaudRate.TabIndex = 6;
+            // 
+            // lblBaudRate
+            // 
+            this.lblBaudRate.AutoSize = true;
+            this.lblBaudRate.Location = new System.Drawing.Point(11, 58);
+            this.lblBaudRate.Name = "lblBaudRate";
+            this.lblBaudRate.Size = new System.Drawing.Size(35, 13);
+            this.lblBaudRate.TabIndex = 2;
+            this.lblBaudRate.Text = "Baud:";
+            // 
+            // lblCom
+            // 
+            this.lblCom.AutoSize = true;
+            this.lblCom.Location = new System.Drawing.Point(11, 29);
+            this.lblCom.Name = "lblCom";
+            this.lblCom.Size = new System.Drawing.Size(34, 13);
+            this.lblCom.TabIndex = 1;
+            this.lblCom.Text = "COM:";
+            // 
+            // cbbComPorts
+            // 
+            this.cbbComPorts.BackColor = System.Drawing.SystemColors.Info;
+            this.cbbComPorts.FormattingEnabled = true;
+            this.cbbComPorts.Location = new System.Drawing.Point(49, 26);
+            this.cbbComPorts.Name = "cbbComPorts";
+            this.cbbComPorts.Size = new System.Drawing.Size(72, 21);
+            this.cbbComPorts.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtTradu);
+            this.groupBox1.Location = new System.Drawing.Point(12, 110);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(671, 231);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tradução";
+            // 
+            // cbbHandshake
+            // 
+            this.cbbHandshake.BackColor = System.Drawing.SystemColors.Info;
+            this.cbbHandshake.FormattingEnabled = true;
+            this.cbbHandshake.Location = new System.Drawing.Point(337, 26);
+            this.cbbHandshake.Name = "cbbHandshake";
+            this.cbbHandshake.Size = new System.Drawing.Size(72, 21);
+            this.cbbHandshake.TabIndex = 24;
+            // 
+            // cbbMode
+            // 
+            this.cbbMode.BackColor = System.Drawing.SystemColors.Info;
+            this.cbbMode.FormattingEnabled = true;
+            this.cbbMode.Location = new System.Drawing.Point(337, 55);
+            this.cbbMode.Name = "cbbMode";
+            this.cbbMode.Size = new System.Drawing.Size(72, 21);
+            this.cbbMode.TabIndex = 23;
+            // 
+            // lblMode
+            // 
+            this.lblMode.AutoSize = true;
+            this.lblMode.Location = new System.Drawing.Point(266, 58);
+            this.lblMode.Name = "lblMode";
+            this.lblMode.Size = new System.Drawing.Size(37, 13);
+            this.lblMode.TabIndex = 22;
+            this.lblMode.Text = "Mode:";
+            // 
+            // lblHandShake
+            // 
+            this.lblHandShake.AutoSize = true;
+            this.lblHandShake.Location = new System.Drawing.Point(266, 29);
+            this.lblHandShake.Name = "lblHandShake";
+            this.lblHandShake.Size = new System.Drawing.Size(65, 13);
+            this.lblHandShake.TabIndex = 21;
+            this.lblHandShake.Text = "Handshake:";
+            // 
+            // cbbParity
+            // 
+            this.cbbParity.BackColor = System.Drawing.SystemColors.Info;
+            this.cbbParity.FormattingEnabled = true;
+            this.cbbParity.Location = new System.Drawing.Point(188, 59);
+            this.cbbParity.Name = "cbbParity";
+            this.cbbParity.Size = new System.Drawing.Size(72, 21);
+            this.cbbParity.TabIndex = 20;
+            // 
+            // lblParity
+            // 
+            this.lblParity.AutoSize = true;
+            this.lblParity.Location = new System.Drawing.Point(129, 58);
+            this.lblParity.Name = "lblParity";
+            this.lblParity.Size = new System.Drawing.Size(36, 13);
+            this.lblParity.TabIndex = 19;
+            this.lblParity.Text = "Parity:";
+            // 
+            // cbbDataSize
+            // 
+            this.cbbDataSize.BackColor = System.Drawing.SystemColors.Info;
+            this.cbbDataSize.FormattingEnabled = true;
+            this.cbbDataSize.Location = new System.Drawing.Point(188, 26);
+            this.cbbDataSize.Name = "cbbDataSize";
+            this.cbbDataSize.Size = new System.Drawing.Size(72, 21);
+            this.cbbDataSize.TabIndex = 18;
+            // 
+            // lblDataSize
+            // 
+            this.lblDataSize.AutoSize = true;
+            this.lblDataSize.Location = new System.Drawing.Point(129, 29);
+            this.lblDataSize.Name = "lblDataSize";
+            this.lblDataSize.Size = new System.Drawing.Size(56, 13);
+            this.lblDataSize.TabIndex = 17;
+            this.lblDataSize.Text = "Data Size:";
+            // 
+            // Tradução_Braille
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(694, 390);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpbConnection);
+            this.Controls.Add(this.button1);
+            this.Name = "Tradução_Braille";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Tradução_Braille";
+            this.Load += new System.EventHandler(this.Tradução_Braille_Load);
+            this.gpbConnection.ResumeLayout(false);
+            this.gpbConnection.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtTradu;
+        private System.Windows.Forms.GroupBox gpbConnection;
+        private System.Windows.Forms.Button btnDisconnect;
+        private System.Windows.Forms.Button btnConnect;
+        private System.Windows.Forms.ComboBox cbbBaudRate;
+        private System.Windows.Forms.Label lblBaudRate;
+        private System.Windows.Forms.Label lblCom;
+        private System.Windows.Forms.ComboBox cbbComPorts;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cbbHandshake;
+        private System.Windows.Forms.ComboBox cbbMode;
+        private System.Windows.Forms.Label lblMode;
+        private System.Windows.Forms.Label lblHandShake;
+        private System.Windows.Forms.ComboBox cbbParity;
+        private System.Windows.Forms.Label lblParity;
+        private System.Windows.Forms.ComboBox cbbDataSize;
+        private System.Windows.Forms.Label lblDataSize;
+    }
+}
