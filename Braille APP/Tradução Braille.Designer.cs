@@ -31,21 +31,21 @@
             this.button1 = new System.Windows.Forms.Button();
             this.txtTradu = new System.Windows.Forms.TextBox();
             this.gpbConnection = new System.Windows.Forms.GroupBox();
-            this.btnDisconnect = new System.Windows.Forms.Button();
-            this.btnConnect = new System.Windows.Forms.Button();
-            this.cbbBaudRate = new System.Windows.Forms.ComboBox();
-            this.lblBaudRate = new System.Windows.Forms.Label();
-            this.lblCom = new System.Windows.Forms.Label();
-            this.cbbComPorts = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbbHandshake = new System.Windows.Forms.ComboBox();
             this.cbbMode = new System.Windows.Forms.ComboBox();
+            this.btnDisconnect = new System.Windows.Forms.Button();
             this.lblMode = new System.Windows.Forms.Label();
+            this.btnConnect = new System.Windows.Forms.Button();
             this.lblHandShake = new System.Windows.Forms.Label();
+            this.cbbBaudRate = new System.Windows.Forms.ComboBox();
             this.cbbParity = new System.Windows.Forms.ComboBox();
+            this.lblBaudRate = new System.Windows.Forms.Label();
             this.lblParity = new System.Windows.Forms.Label();
+            this.lblCom = new System.Windows.Forms.Label();
             this.cbbDataSize = new System.Windows.Forms.ComboBox();
+            this.cbbComPorts = new System.Windows.Forms.ComboBox();
             this.lblDataSize = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gpbConnection.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +62,9 @@
             // 
             // txtTradu
             // 
+            this.txtTradu.AcceptsReturn = true;
+            this.txtTradu.AcceptsTab = true;
+            this.txtTradu.AllowDrop = true;
             this.txtTradu.Enabled = false;
             this.txtTradu.Location = new System.Drawing.Point(6, 19);
             this.txtTradu.Multiline = true;
@@ -92,72 +95,6 @@
             this.gpbConnection.TabStop = false;
             this.gpbConnection.Text = "Conexão";
             // 
-            // btnDisconnect
-            // 
-            this.btnDisconnect.Location = new System.Drawing.Point(536, 49);
-            this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(124, 31);
-            this.btnDisconnect.TabIndex = 15;
-            this.btnDisconnect.Text = "Disconnect";
-            this.btnDisconnect.UseVisualStyleBackColor = true;
-            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
-            // 
-            // btnConnect
-            // 
-            this.btnConnect.Location = new System.Drawing.Point(536, 11);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(124, 32);
-            this.btnConnect.TabIndex = 6;
-            this.btnConnect.Text = "Connect";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
-            // cbbBaudRate
-            // 
-            this.cbbBaudRate.BackColor = System.Drawing.SystemColors.Info;
-            this.cbbBaudRate.FormattingEnabled = true;
-            this.cbbBaudRate.Location = new System.Drawing.Point(49, 55);
-            this.cbbBaudRate.Name = "cbbBaudRate";
-            this.cbbBaudRate.Size = new System.Drawing.Size(72, 21);
-            this.cbbBaudRate.TabIndex = 6;
-            // 
-            // lblBaudRate
-            // 
-            this.lblBaudRate.AutoSize = true;
-            this.lblBaudRate.Location = new System.Drawing.Point(11, 58);
-            this.lblBaudRate.Name = "lblBaudRate";
-            this.lblBaudRate.Size = new System.Drawing.Size(35, 13);
-            this.lblBaudRate.TabIndex = 2;
-            this.lblBaudRate.Text = "Baud:";
-            // 
-            // lblCom
-            // 
-            this.lblCom.AutoSize = true;
-            this.lblCom.Location = new System.Drawing.Point(11, 29);
-            this.lblCom.Name = "lblCom";
-            this.lblCom.Size = new System.Drawing.Size(34, 13);
-            this.lblCom.TabIndex = 1;
-            this.lblCom.Text = "COM:";
-            // 
-            // cbbComPorts
-            // 
-            this.cbbComPorts.BackColor = System.Drawing.SystemColors.Info;
-            this.cbbComPorts.FormattingEnabled = true;
-            this.cbbComPorts.Location = new System.Drawing.Point(49, 26);
-            this.cbbComPorts.Name = "cbbComPorts";
-            this.cbbComPorts.Size = new System.Drawing.Size(72, 21);
-            this.cbbComPorts.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtTradu);
-            this.groupBox1.Location = new System.Drawing.Point(12, 110);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(671, 231);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tradução";
-            // 
             // cbbHandshake
             // 
             this.cbbHandshake.BackColor = System.Drawing.SystemColors.Info;
@@ -176,6 +113,16 @@
             this.cbbMode.Size = new System.Drawing.Size(72, 21);
             this.cbbMode.TabIndex = 23;
             // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.Location = new System.Drawing.Point(536, 49);
+            this.btnDisconnect.Name = "btnDisconnect";
+            this.btnDisconnect.Size = new System.Drawing.Size(124, 31);
+            this.btnDisconnect.TabIndex = 15;
+            this.btnDisconnect.Text = "Disconnect";
+            this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
+            // 
             // lblMode
             // 
             this.lblMode.AutoSize = true;
@@ -184,6 +131,16 @@
             this.lblMode.Size = new System.Drawing.Size(37, 13);
             this.lblMode.TabIndex = 22;
             this.lblMode.Text = "Mode:";
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(536, 11);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(124, 32);
+            this.btnConnect.TabIndex = 6;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // lblHandShake
             // 
@@ -194,6 +151,15 @@
             this.lblHandShake.TabIndex = 21;
             this.lblHandShake.Text = "Handshake:";
             // 
+            // cbbBaudRate
+            // 
+            this.cbbBaudRate.BackColor = System.Drawing.SystemColors.Info;
+            this.cbbBaudRate.FormattingEnabled = true;
+            this.cbbBaudRate.Location = new System.Drawing.Point(49, 55);
+            this.cbbBaudRate.Name = "cbbBaudRate";
+            this.cbbBaudRate.Size = new System.Drawing.Size(72, 21);
+            this.cbbBaudRate.TabIndex = 6;
+            // 
             // cbbParity
             // 
             this.cbbParity.BackColor = System.Drawing.SystemColors.Info;
@@ -202,6 +168,15 @@
             this.cbbParity.Name = "cbbParity";
             this.cbbParity.Size = new System.Drawing.Size(72, 21);
             this.cbbParity.TabIndex = 20;
+            // 
+            // lblBaudRate
+            // 
+            this.lblBaudRate.AutoSize = true;
+            this.lblBaudRate.Location = new System.Drawing.Point(11, 58);
+            this.lblBaudRate.Name = "lblBaudRate";
+            this.lblBaudRate.Size = new System.Drawing.Size(35, 13);
+            this.lblBaudRate.TabIndex = 2;
+            this.lblBaudRate.Text = "Baud:";
             // 
             // lblParity
             // 
@@ -212,6 +187,15 @@
             this.lblParity.TabIndex = 19;
             this.lblParity.Text = "Parity:";
             // 
+            // lblCom
+            // 
+            this.lblCom.AutoSize = true;
+            this.lblCom.Location = new System.Drawing.Point(11, 29);
+            this.lblCom.Name = "lblCom";
+            this.lblCom.Size = new System.Drawing.Size(34, 13);
+            this.lblCom.TabIndex = 1;
+            this.lblCom.Text = "COM:";
+            // 
             // cbbDataSize
             // 
             this.cbbDataSize.BackColor = System.Drawing.SystemColors.Info;
@@ -221,6 +205,15 @@
             this.cbbDataSize.Size = new System.Drawing.Size(72, 21);
             this.cbbDataSize.TabIndex = 18;
             // 
+            // cbbComPorts
+            // 
+            this.cbbComPorts.BackColor = System.Drawing.SystemColors.Info;
+            this.cbbComPorts.FormattingEnabled = true;
+            this.cbbComPorts.Location = new System.Drawing.Point(49, 26);
+            this.cbbComPorts.Name = "cbbComPorts";
+            this.cbbComPorts.Size = new System.Drawing.Size(72, 21);
+            this.cbbComPorts.TabIndex = 0;
+            // 
             // lblDataSize
             // 
             this.lblDataSize.AutoSize = true;
@@ -229,6 +222,16 @@
             this.lblDataSize.Size = new System.Drawing.Size(56, 13);
             this.lblDataSize.TabIndex = 17;
             this.lblDataSize.Text = "Data Size:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtTradu);
+            this.groupBox1.Location = new System.Drawing.Point(12, 110);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(671, 231);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Tradução";
             // 
             // Tradução_Braille
             // 

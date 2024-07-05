@@ -132,12 +132,12 @@ namespace Braille_APP
         private void btn_Traduzir_Click(object sender, EventArgs e)
         {
             string frase = txtValue.Text;
-            string[,] brailleMatrix = new string[Rows * 3, Columns]; // Multiplicar as linhas por 3 para acomodar cada linha de Braille
+            string[,] brailleMatrix = new string[Rows * 3, Columns * 2]; // Multiplicar as linhas por 3 e colunas por 2 para acomodar cada linha de Braille
 
             // Inicializar matriz de Braille
             for (int r = 0; r < Rows * 3; r++)
             {
-                for (int c = 0; c < Columns; c++)
+                for (int c = 0; c < Columns * 2; c++)
                 {
                     brailleMatrix[r, c] = " ";
                 }
@@ -164,7 +164,7 @@ namespace Braille_APP
 
                 if (letra == ' ')
                 {
-                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "  ", "  ", "  ");
+                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "00", "00");
                 }
                 else if ((letra >= 'a' && letra <= 'z') || letra == ',' || letra == '?' || letra == '!' || letra == '.' || letra == ';' || letra == ':')
                 {
@@ -174,9 +174,9 @@ namespace Braille_APP
                         if (isUpper)
                         {
                             // Prefixo para letras maiúsculas
-                            AddBrailleChar(brailleMatrix, currentRow, currentCol, " 01", " 00", " 01");
-                            currentCol++;
-                            if (currentCol >= Columns)
+                            AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "01", "00");
+                            currentCol += 2;
+                            if (currentCol >= Columns * 2)
                             {
                                 currentCol = 0;
                                 currentRow += 3;
@@ -193,9 +193,9 @@ namespace Braille_APP
                 else if (letra >= '0' && letra <= '9')
                 {
                     // Prefixo para números
-                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "01", "01", "11");
-                    currentCol++;
-                    if (currentCol >= Columns)
+                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "01", "11");
+                    currentCol += 2;
+                    if (currentCol >= Columns * 2)
                     {
                         currentCol = 0;
                         currentRow += 3;
@@ -210,8 +210,8 @@ namespace Braille_APP
                 }
 
                 // Atualizar posição na matriz
-                currentCol++;
-                if (currentCol >= Columns)
+                currentCol += 2;
+                if (currentCol >= Columns * 2)
                 {
                     currentCol = 0;
                     currentRow += 3;
