@@ -15,7 +15,6 @@ namespace Braille_APP
     public partial class Tradução_Braille : Form
     {
         SerialPort _serial = new SerialPort();
-        private string RxString; 
 
         public Tradução_Braille()
         {
@@ -172,15 +171,33 @@ namespace Braille_APP
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             if (!_serial.IsOpen)
             {
+                MessageBox.Show("A porta serial não está aberta. Por favor, conecte-se primeiro.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            string[] lines = txtTradu.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
 
-            _serial.Write(txtTradu.Text);
+            foreach (string line in lines)
+            {
+                foreach (char c in line)
+                {
+                    if (c == '1' || c == '0')
+                    {
+                        _serial.Write(c.ToString());
+                        await Task.Delay(1000); // Delay de 1 segundo entre cada caractere
+                    }
+                }
+
+                // Enviar uma quebra de linha para indicar a mudança de linha
+                _serial.Write(Environment.NewLine);
+                await Task.Delay(1000); // Delay de 1 segundo para a quebra de linha
+            }
+
+            MessageBox.Show("Transmissão concluída.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 

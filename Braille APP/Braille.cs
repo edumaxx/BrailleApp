@@ -13,6 +13,8 @@ namespace Braille_APP
 {
     public partial class Braille : Form
     {
+        private const int Columns = 50;
+        private const int Rows = 54;
 
         string[] brailleABNT = {
             "100000", // a
@@ -127,91 +129,136 @@ namespace Braille_APP
                 }
             }
         }
-
-
-
         private void btn_Traduzir_Click(object sender, EventArgs e)
         {
             string frase = txtValue.Text;
-            string[] braille = { "", "", "" };
+            string[,] brailleMatrix = new string[Rows * 3, Columns]; // Multiplicar as linhas por 3 para acomodar cada linha de Braille
+
+            // Inicializar matriz de Braille
+            for (int r = 0; r < Rows * 3; r++)
+            {
+                for (int c = 0; c < Columns; c++)
+                {
+                    brailleMatrix[r, c] = " ";
+                }
+            }
+
+            // Traduzir frase para Braille e preencher a matriz
+            FillBrailleMatrix(frase, brailleMatrix);
+
+            Tradução_Braille newForm = new Tradução_Braille();
+            newForm.SetText(ConvertMatrixToArray(brailleMatrix)); // Converter a matriz antes de passar
+            newForm.ShowDialog();
+        }
+
+        private void FillBrailleMatrix(string frase, string[,] brailleMatrix)
+        {
+            int currentRow = 0;
+            int currentCol = 0;
 
             for (int i = 0; i < frase.Length; i++)
             {
-                char letra = char.ToLower(frase[i]);
+                char letra = frase[i];
+                bool isUpper = char.IsUpper(letra);
+                letra = char.ToLower(letra);
+
                 if (letra == ' ')
                 {
-                    braille[0] += "  ";
-                    braille[1] += "  ";
-                    braille[2] += "  ";
+                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "  ", "  ", "  ");
                 }
                 else if ((letra >= 'a' && letra <= 'z') || letra == ',' || letra == '?' || letra == '!' || letra == '.' || letra == ';' || letra == ':')
                 {
-                    int index;
-                    if (letra >= 'a' && letra <= 'z')
-                    {
-                        index = letra - 'a';
-                    }
-                    else if (letra == ',')
-                    {
-                        index = 26;
-                    }
-                    else if (letra == ';')
-                    {
-                        index = 27;
-                    }
-                    else if (letra == ':')
-                    {
-                        index = 28;
-                    }
-                    else if (letra == '.')
-                    {
-                        index = 29;
-                    }
-                    else if (letra == '?')
-                    {
-                        index = 30;
-                    }
-                    else if (letra == '!')
-                    {
-                        index = 31;
-                    }
-                    else
-                    {
-                        index = -1;
-                    }
-
+                    int index = GetBrailleIndex(letra);
                     if (index != -1)
                     {
-                        string codigo = brailleABNT[index];
-
-                        if (char.IsUpper(frase[i]))
+                        if (isUpper)
                         {
-                            braille[0] += "01 ";
-                            braille[1] += "00 ";
-                            braille[2] += "01 ";
+                            // Prefixo para letras maiúsculas
+                            AddBrailleChar(brailleMatrix, currentRow, currentCol, " 01", " 00", " 01");
+                            currentCol++;
+                            if (currentCol >= Columns)
+                            {
+                                currentCol = 0;
+                                currentRow += 3;
+                                if (currentRow >= Rows * 3) break;
+                            }
                         }
-
-                        braille[0] += codigo.Substring(0, 2) + " ";
-                        braille[1] += codigo.Substring(2, 2) + " ";
-                        braille[2] += codigo.Substring(4, 2) + " ";
+                        string codigo = brailleABNT[index];
+                        AddBrailleChar(brailleMatrix, currentRow, currentCol,
+                            codigo.Substring(0, 2),
+                            codigo.Substring(2, 2),
+                            codigo.Substring(4, 2));
                     }
                 }
                 else if (letra >= '0' && letra <= '9')
                 {
-                    braille[0] += "01 ";
-                    braille[1] += "01 ";
-                    braille[2] += "11 ";
-                    int indice = letra - '0';
-                    string codigo = brailleNum[indice];
-                    braille[0] += codigo.Substring(0, 2) + " ";
-                    braille[1] += codigo.Substring(2, 2) + " ";
-                    braille[2] += codigo.Substring(4, 2) + " ";
+                    // Prefixo para números
+                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "01", "01", "11");
+                    currentCol++;
+                    if (currentCol >= Columns)
+                    {
+                        currentCol = 0;
+                        currentRow += 3;
+                        if (currentRow >= Rows * 3) break;
+                    }
+
+                    string codigo = brailleNum[letra - '0'];
+                    AddBrailleChar(brailleMatrix, currentRow, currentCol,
+                        codigo.Substring(0, 2),
+                        codigo.Substring(2, 2),
+                        codigo.Substring(4, 2));
+                }
+
+                // Atualizar posição na matriz
+                currentCol++;
+                if (currentCol >= Columns)
+                {
+                    currentCol = 0;
+                    currentRow += 3;
+                    if (currentRow >= Rows * 3)
+                    {
+                        break; // Parar se atingir o fim da matriz
+                    }
                 }
             }
+        }
 
-            Tradução_Braille newForm = new Tradução_Braille();
-            newForm.SetText(braille);
-            newForm.ShowDialog();
+        private void AddBrailleChar(string[,] brailleMatrix, int row, int col, string line1, string line2, string line3)
+        {
+            brailleMatrix[row, col] = line1;
+            brailleMatrix[row + 1, col] = line2;
+            brailleMatrix[row + 2, col] = line3;
+        }
+
+        private int GetBrailleIndex(char letra)
+        {
+            if (letra >= 'a' && letra <= 'z') return letra - 'a';
+            if (letra == ',') return 26;
+            if (letra == ';') return 27;
+            if (letra == ':') return 28;
+            if (letra == '.') return 29;
+            if (letra == '?') return 30;
+            if (letra == '!') return 31;
+            return -1;
+        }
+
+        private string[] ConvertMatrixToArray(string[,] matrix)
+        {
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+            string[] result = new string[rows];
+
+            for (int r = 0; r < rows; r++)
+            {
+                StringBuilder rowBuilder = new StringBuilder();
+                for (int c = 0; c < cols; c++)
+                {
+                    rowBuilder.Append(matrix[r, c]);
+                }
+                result[r] = rowBuilder.ToString();
+            }
+
+            return result;
         }
 
 
