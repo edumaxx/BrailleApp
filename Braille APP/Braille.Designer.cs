@@ -101,7 +101,7 @@
             this.txtValue.AcceptsTab = true;
             this.txtValue.AllowDrop = true;
             this.txtValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValue.Location = new System.Drawing.Point(3, 16);
             this.txtValue.MaxLength = 675;
             this.txtValue.Multiline = true;

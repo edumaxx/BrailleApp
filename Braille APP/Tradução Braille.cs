@@ -121,9 +121,9 @@ namespace Braille_APP
                 }
 
                 string[] lines = tb.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-                if (lines.Length > 27)
+                if (lines.Length > 54)
                 {
-                    tb.Text = string.Join(Environment.NewLine, lines, 0, 27);
+                    tb.Text = string.Join(Environment.NewLine, lines, 0, 54);
                     tb.SelectionStart = tb.Text.Length;
                     tb.SelectionLength = 0;
                 }
@@ -132,11 +132,11 @@ namespace Braille_APP
                 {
                     for (int i = 0; i < lines.Length; i++)
                     {
-                        if (lines[i].Length > 25)
+                        if (lines[i].Length > 50)
                         {
                             string currentLine = lines[i];
-                            lines[i] = currentLine.Substring(0, 25);
-                            string remainingText = currentLine.Substring(25);
+                            lines[i] = currentLine.Substring(0, 50);
+                            string remainingText = currentLine.Substring(50);
 
                             if (i + 1 < lines.Length)
                             {
@@ -159,11 +159,11 @@ namespace Braille_APP
             }
         }
 
-        public void SetText(string[] braille)
+        public void SetText(StringBuilder formattedBrailleText)
         {
-            if (txtTradu.Text != null)
+            if (txtTradu != null)
             {
-                txtTradu.Text = $"{braille[0]}\r\n{braille[1]}\r\n{braille[2]}";
+                txtTradu.Text = formattedBrailleText.ToString();
             }
             else
             {
@@ -188,13 +188,13 @@ namespace Braille_APP
                     if (c == '1' || c == '0')
                     {
                         _serial.Write(c.ToString());
-                        await Task.Delay(1000); // Delay de 1 segundo entre cada caractere
+                        await Task.Delay(50); // Delay de 1 segundo entre cada caractere
                     }
                 }
 
                 // Enviar uma quebra de linha para indicar a mudança de linha
                 _serial.Write(Environment.NewLine);
-                await Task.Delay(1000); // Delay de 1 segundo para a quebra de linha
+                await Task.Delay(50); // Delay de 1 segundo para a quebra de linha
             }
 
             MessageBox.Show("Transmissão concluída.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Threading;
+using System.Collections.Generic;
+using static Braille_APP.Braille;
 
 namespace Braille_APP
 {
@@ -65,6 +67,22 @@ namespace Braille_APP
             "011000"  // 9
         };
 
+        public class BrailleCharacter
+        {
+            public string line1 { get; set; }
+            public string line2 { get; set; }
+            public string line3 { get; set; }
+        }
+
+        public class BrailleRow
+        {
+            public List<BrailleCharacter> characterList = new List<BrailleCharacter>();           
+        }
+
+        public class BraillePaper
+        {
+            public List<BrailleRow> linesList = new List<BrailleRow>();
+        }
 
         public Braille()
         {
@@ -132,7 +150,10 @@ namespace Braille_APP
         private void btn_Traduzir_Click(object sender, EventArgs e)
         {
             string frase = txtValue.Text;
-            string[,] brailleMatrix = new string[Rows * 3, Columns * 2]; // Multiplicar as linhas por 3 e colunas por 2 para acomodar cada linha de Braille
+            string[,] brailleMatrix = new string[Rows * 3, Columns * 2];
+            BraillePaper braillePaper = new BraillePaper();
+            List<BrailleRow> brailleRowList = new List<BrailleRow>();
+            List<BrailleCharacter> brailleCharList = new List<BrailleCharacter>();
 
             // Inicializar matriz de Braille
             for (int r = 0; r < Rows * 3; r++)
@@ -144,15 +165,20 @@ namespace Braille_APP
             }
 
             // Traduzir frase para Braille e preencher a matriz
-            FillBrailleMatrix(frase, brailleMatrix);
+            FillBrailleMatrix(frase, brailleMatrix, braillePaper, brailleRowList, brailleCharList);
+
+            // Converter as linhas de Braille para string formatada
+            StringBuilder formattedBrailleText = ConvertBrailleToFormattedString(braillePaper, Columns);
+
 
             Tradução_Braille newForm = new Tradução_Braille();
-            newForm.SetText(ConvertMatrixToArray(brailleMatrix)); // Converter a matriz antes de passar
+            newForm.SetText(formattedBrailleText); // Converter a matriz antes de passar
             newForm.ShowDialog();
         }
 
-        private void FillBrailleMatrix(string frase, string[,] brailleMatrix)
+        private void FillBrailleMatrix(string frase, string[,] brailleMatrix, BraillePaper braillePaper, List<BrailleRow> brailleRowList, List<BrailleCharacter> brailleCharList)
         {
+            frase = frase.Replace("\r\n", "");
             int currentRow = 0;
             int currentCol = 0;
 
@@ -161,10 +187,11 @@ namespace Braille_APP
                 char letra = frase[i];
                 bool isUpper = char.IsUpper(letra);
                 letra = char.ToLower(letra);
+                BrailleCharacter brailleChar = new BrailleCharacter();
 
                 if (letra == ' ')
                 {
-                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "00", "00");
+                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "00", "00", brailleChar);
                 }
                 else if ((letra >= 'a' && letra <= 'z') || letra == ',' || letra == '?' || letra == '!' || letra == '.' || letra == ';' || letra == ':')
                 {
@@ -174,7 +201,7 @@ namespace Braille_APP
                         if (isUpper)
                         {
                             // Prefixo para letras maiúsculas
-                            AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "01", "00");
+                            AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "01", "00", brailleChar);
                             currentCol += 2;
                             if (currentCol >= Columns * 2)
                             {
@@ -187,13 +214,14 @@ namespace Braille_APP
                         AddBrailleChar(brailleMatrix, currentRow, currentCol,
                             codigo.Substring(0, 2),
                             codigo.Substring(2, 2),
-                            codigo.Substring(4, 2));
+                            codigo.Substring(4, 2),
+                            brailleChar);
                     }
                 }
                 else if (letra >= '0' && letra <= '9')
                 {
                     // Prefixo para números
-                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "01", "11");
+                    AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "01", "11", brailleChar);
                     currentCol += 2;
                     if (currentCol >= Columns * 2)
                     {
@@ -206,8 +234,10 @@ namespace Braille_APP
                     AddBrailleChar(brailleMatrix, currentRow, currentCol,
                         codigo.Substring(0, 2),
                         codigo.Substring(2, 2),
-                        codigo.Substring(4, 2));
+                        codigo.Substring(4, 2),
+                        brailleChar);
                 }
+                brailleCharList.Add(brailleChar);
 
                 // Atualizar posição na matriz
                 currentCol += 2;
@@ -221,13 +251,63 @@ namespace Braille_APP
                     }
                 }
             }
+            brailleCharList.Add(new BrailleCharacter());
+            int numberRows = (brailleCharList.Count / Columns) + 1;
+            for (int i = 0; i < numberRows; i++)
+            {
+                BrailleRow row = new BrailleRow();
+                for (int j = 0; j < Columns; j++)
+                {
+                    int index = i * Columns + j;
+                    if (index < brailleCharList.Count)
+                    {
+                        row.characterList.Add(brailleCharList[index]);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                brailleRowList.Add(row);
+            };
+            braillePaper.linesList = brailleRowList;
         }
 
-        private void AddBrailleChar(string[,] brailleMatrix, int row, int col, string line1, string line2, string line3)
+        private void AddBrailleChar(string[,] brailleMatrix, int row, int col, string line1, string line2, string line3, BrailleCharacter brailleChar)
         {
             brailleMatrix[row, col] = line1;
+            brailleChar.line1 = line1;
+
             brailleMatrix[row + 1, col] = line2;
+            brailleChar.line2 = line2;
+
             brailleMatrix[row + 2, col] = line3;
+            brailleChar.line3 = line3;
+        }
+
+        private StringBuilder ConvertBrailleToFormattedString(BraillePaper braillePaper, int columns)
+        {
+            StringBuilder formattedString = new StringBuilder();
+
+            foreach (var row in braillePaper.linesList)
+            {
+                StringBuilder line1 = new StringBuilder();
+                StringBuilder line2 = new StringBuilder();
+                StringBuilder line3 = new StringBuilder();
+
+                foreach (var brailleChar in row.characterList)
+                {
+                    line1.Append(brailleChar.line1 + " ");
+                    line2.Append(brailleChar.line2 + " ");
+                    line3.Append(brailleChar.line3 + " ");
+                }
+
+                formattedString.AppendLine(line1.ToString().TrimEnd());
+                formattedString.AppendLine(line2.ToString().TrimEnd());
+                formattedString.AppendLine(line3.ToString().TrimEnd());
+            }
+
+            return formattedString;
         }
 
         private int GetBrailleIndex(char letra)
@@ -240,25 +320,6 @@ namespace Braille_APP
             if (letra == '?') return 30;
             if (letra == '!') return 31;
             return -1;
-        }
-
-        private string[] ConvertMatrixToArray(string[,] matrix)
-        {
-            int rows = matrix.GetLength(0);
-            int cols = matrix.GetLength(1);
-            string[] result = new string[rows];
-
-            for (int r = 0; r < rows; r++)
-            {
-                StringBuilder rowBuilder = new StringBuilder();
-                for (int c = 0; c < cols; c++)
-                {
-                    rowBuilder.Append(matrix[r, c]);
-                }
-                result[r] = rowBuilder.ToString();
-            }
-
-            return result;
         }
 
 

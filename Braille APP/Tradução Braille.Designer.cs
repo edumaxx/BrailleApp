@@ -52,7 +52,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(548, 347);
+            this.button1.Location = new System.Drawing.Point(701, 347);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 31);
             this.button1.TabIndex = 1;
@@ -69,7 +69,7 @@
             this.txtTradu.Location = new System.Drawing.Point(6, 19);
             this.txtTradu.Multiline = true;
             this.txtTradu.Name = "txtTradu";
-            this.txtTradu.Size = new System.Drawing.Size(660, 206);
+            this.txtTradu.Size = new System.Drawing.Size(801, 206);
             this.txtTradu.TabIndex = 2;
             // 
             // gpbConnection
@@ -90,7 +90,7 @@
             this.gpbConnection.Controls.Add(this.lblDataSize);
             this.gpbConnection.Location = new System.Drawing.Point(12, 12);
             this.gpbConnection.Name = "gpbConnection";
-            this.gpbConnection.Size = new System.Drawing.Size(671, 92);
+            this.gpbConnection.Size = new System.Drawing.Size(813, 92);
             this.gpbConnection.TabIndex = 4;
             this.gpbConnection.TabStop = false;
             this.gpbConnection.Text = "Conexão";
@@ -115,7 +115,7 @@
             // 
             // btnDisconnect
             // 
-            this.btnDisconnect.Location = new System.Drawing.Point(536, 49);
+            this.btnDisconnect.Location = new System.Drawing.Point(683, 53);
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(124, 31);
             this.btnDisconnect.TabIndex = 15;
@@ -134,7 +134,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(536, 11);
+            this.btnConnect.Location = new System.Drawing.Point(683, 15);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(124, 32);
             this.btnConnect.TabIndex = 6;
@@ -228,7 +228,7 @@
             this.groupBox1.Controls.Add(this.txtTradu);
             this.groupBox1.Location = new System.Drawing.Point(12, 110);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(671, 231);
+            this.groupBox1.Size = new System.Drawing.Size(813, 231);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tradução";
@@ -237,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 390);
+            this.ClientSize = new System.Drawing.Size(838, 390);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpbConnection);
             this.Controls.Add(this.button1);
