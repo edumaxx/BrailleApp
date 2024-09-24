@@ -66,7 +66,7 @@ namespace Braille_APP
             "101100", // 8
             "011000"  // 9
         };
-
+        //tem que concluir a parte das letras em maiusculo
         public class BrailleCharacter
         {
             public string line1 { get; set; }
