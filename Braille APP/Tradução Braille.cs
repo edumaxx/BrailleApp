@@ -188,13 +188,13 @@ namespace Braille_APP
                     if (c == '1' || c == '0')
                     {
                         _serial.Write(c.ToString());
-                        await Task.Delay(50); // Delay de 1 segundo entre cada caractere
+                        await Task.Delay(1000); // Delay de 1 segundo entre cada caractere
                     }
                 }
 
                 // Enviar uma quebra de linha para indicar a mudança de linha
                 _serial.Write(Environment.NewLine);
-                await Task.Delay(50); // Delay de 1 segundo para a quebra de linha
+                await Task.Delay(1000); // Delay de 1 segundo para a quebra de linha
             }
 
             MessageBox.Show("Transmissão concluída.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);

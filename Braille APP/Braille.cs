@@ -15,7 +15,7 @@ namespace Braille_APP
 {
     public partial class Braille : Form
     {
-        private const int Columns = 50;
+        private const int Columns = 25;
         private const int Rows = 54;
 
         string[] brailleABNT = {
@@ -186,6 +186,7 @@ namespace Braille_APP
             {
                 char letra = frase[i];
                 bool isUpper = char.IsUpper(letra);
+                bool isDigit = char.IsDigit(letra);
                 letra = char.ToLower(letra);
                 BrailleCharacter brailleChar = new BrailleCharacter();
 
@@ -218,7 +219,7 @@ namespace Braille_APP
                             brailleChar);
                     }
                 }
-                else if (letra >= '0' && letra <= '9')
+                else if (isDigit)
                 {
                     // Prefixo para números
                     AddBrailleChar(brailleMatrix, currentRow, currentCol, "00", "01", "11", brailleChar);
@@ -237,6 +238,7 @@ namespace Braille_APP
                         codigo.Substring(4, 2),
                         brailleChar);
                 }
+
                 brailleCharList.Add(brailleChar);
 
                 // Atualizar posição na matriz
