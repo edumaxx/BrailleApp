@@ -70,7 +70,6 @@
             this.txtTradu.Location = new System.Drawing.Point(6, 19);
             this.txtTradu.Multiline = true;
             this.txtTradu.Name = "txtTradu";
-            this.txtTradu.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTradu.Size = new System.Drawing.Size(759, 206);
             this.txtTradu.TabIndex = 2;
             // 
