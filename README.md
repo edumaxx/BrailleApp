@@ -6,3 +6,4 @@ Este software é um projeto para transcrever letras/palavras em braille, em uma 
 - Baixar o arquivo pelo github.
 - Extrair a pasta BrailleApp.
 - Abrir esta pasta pelo Visual Studio.
+
