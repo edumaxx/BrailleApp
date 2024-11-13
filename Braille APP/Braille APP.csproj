@@ -50,10 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E7C5CCCA9637A059E3195FD3A59C416F6BEAC7A1</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>64D139283E4170E98698A033E6AB68E469F9833D</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Braille APP_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Braille APP_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -104,6 +104,7 @@
     <EmbeddedResource Include="Tradução Braille.resx">
       <DependentUpon>Tradução Braille.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Braille APP_2_TemporaryKey.pfx" />
     <None Include="Braille APP_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

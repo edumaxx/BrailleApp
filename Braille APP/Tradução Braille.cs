@@ -194,7 +194,7 @@ namespace Braille_APP
 
                 // Enviar uma quebra de linha para indicar a mudança de linha
                 _serial.Write(Environment.NewLine);
-                await Task.Delay(9000); // Delay de 9 segundo para a quebra de linha
+                await Task.Delay(8000); // Delay de 8 segundo para a quebra de linha
             }
 
             MessageBox.Show("Transmissão concluída.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
